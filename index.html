@@ -3,9 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kelton Lee Portfolio</title>
 </head>
 <body>
-    <p> this is an example for the beginning of my portfolio.</p>
+    <header>
+        <h1>Kelton Lee</h1>
+        <p>You have reached the portfolio for Kelton Lee.</p>
+    </header>
+    <div class="main-container">
+
+     <script>
+        // List your PDF files here with their display titles
+        const documents = [
+            { filename: "Kelton Lee NREMT Certification.pdf", title: "Kelton Lee NREMT Certification" },
+            { filename: "BLS Certification.pdf", title: "BLS provider certification" },
+            { filename: "IS-100c Certificate.pdf", title: "IS-100c Certificate" },
+            { filename: "Zachary Porter Letter of Reccomendation.pdf", title: "Letter of Reccomendation" }
+        ];
+
+        // Get the main container
+        const container = document.querySelector('.main-container');
+
+        // Loop through documents and create cards
+        documents.forEach(doc => {
+            container.innerHTML += 
+            `<div class="document-card">
+                <div class="document-preview">
+                    <a href="documents/${doc.filename}" class="preview-overlay"></a>
+                    <embed src="documents/${doc.filename}#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="300" height="400">
+                </div>
+                <a href="documents/${doc.filename}" class="document-title">
+                    ${doc.title}
+                </a>
+            </div>`;
+        });
+    </script>
+
 </body>
 </html>
+
+<style>
+    .main-container {
+        width: 100%;
+        justify-content: center;
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    html {
+        background-color: #d9d9d9;
+    }
+
+    body {
+        margin: 0px;
+    }
+
+    header {
+        padding: 5%;
+        width:90%;
+        background-color: #414141;
+        color: #fff;
+    }
+
+    .document-card {
+        width: 300px;
+        padding: 15px;
+    }
+
+    .document-preview {
+        width: 300px;
+        height: 400px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .preview-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+        cursor: pointer;
+        background: transparent;
+    }
+
+    .document-preview embed {
+        pointer-events: none;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .document-title {
+        text-align: center;
+        background-color: #414141;
+        transition: background-color 0.1s;
+        height: 30px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+
+    .document-preview {
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    background-color: white;
+    }
+</style>
